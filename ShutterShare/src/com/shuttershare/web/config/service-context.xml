@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+<!--
+Author: Jesse Jeun
+Date: 10/12/2015
+CS188: Software Engineering - Professor Urness
+Description: service-context.xml - handles all the autowiring of our service objects in UsersService.java
+ 			defines the beans of the root web app context.
+ -->
+ 
+	<context:annotation-config></context:annotation-config>
+	<context:component-scan
+		base-package="com.shuttershare.web.service">
+	</context:component-scan>
+</beans>

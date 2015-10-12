@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+<!--
+Author: Jesse Jeun
+Date: 10/12/2015
+CS188: Software Engineering - Professor Urness
+Description: dao-context.xml - creates a 'dataSource' bean that can be used to autowire values
+			into UsersDao.java. Defines the beans of the root web app context.
+ -->
+	<context:component-scan base-package="com.shuttershare.web.dao"></context:component-scan>
+	<context:annotation-config></context:annotation-config>
+	<jee:jndi-lookup jndi-name="jdbc/test" id="dataSource"
+		expected-type="javax.sql.DataSource">
+	</jee:jndi-lookup>
+</beans>
