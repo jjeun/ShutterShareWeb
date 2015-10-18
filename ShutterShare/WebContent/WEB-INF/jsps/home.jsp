@@ -11,20 +11,35 @@ CS188: Software Engineering - Professor Urness
 Description: home.jsp (java server page) - Renders the homepage for the website utilizing
 			jstl (java server page tag library) and Spring attributes passed by the controller. 
  -->
- 
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link href="${pageContext.request.contextPath}/resources/css/styles.css" rel="stylesheet" type='text/css'/> 
 <title>Insert title here</title>
 </head>
 <body>
 
-<c:forEach var="row" items="${users}">
-    ID: ${row.id}<br/>
-    Name: ${row.firstName} ${row.lastName}<br/>
-    Email: ${row.email}<br/>
-    Password: ${row.password}<br/>
-</c:forEach>
+	<p>
+		<a href="${pageContext.request.contextPath}/createevent">Create a
+			New Event</a>
+	</p>
+
+
+	<c:if test="${events == null}">
+	You have no events created.<br />
+	</c:if>
+	
+	<c:if test="${events != null}">
+	You have events!<br />
+		<table>
+			<c:forEach var="event" items="${events}">
+				<tr>
+					<td><a href="${pageContext.request.contextPath}/eventpictures">${event.description}</a></td>
+				</tr>
+			</c:forEach>
+		</table>
+	</c:if>
 
 </body>
 </html>

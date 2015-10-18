@@ -26,7 +26,7 @@ public class UsersDao {
 
 	public List<Users> getUsers(){
 		
-		String q = "Select * from users";
+		String q = "Select * from accounts where username= 'jesse.jeun@drake.edu';";
 		
 		return jdbc.query(q, new RowMapper<Users>(){
 
@@ -34,11 +34,16 @@ public class UsersDao {
 			public Users mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Users users = new Users();
 				
-				users.setId(rs.getInt("userID"));
-				users.setFirstName(rs.getString("userFirstName"));
-				users.setLastName(rs.getString("userLastName"));
+				users.setUsername(rs.getString("username"));
+				users.setFirstName(rs.getString("firstName"));
+				users.setLastName(rs.getString("lastName"));
 				users.setEmail(rs.getString("userEmail"));
-				users.setPassword(rs.getString("userPassword"));
+				users.setPassword(rs.getString("password"));
+				users.setAddress(rs.getString("address"));
+				users.setCity(rs.getString("city"));
+				users.setState(rs.getString("state"));
+				users.setZipcode(rs.getInt("zipcode"));
+				users.setTelephone(rs.getString("telephone"));
 				
 				return users;
 			}
