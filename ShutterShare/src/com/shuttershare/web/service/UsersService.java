@@ -35,6 +35,7 @@ public class UsersService {
 
 	// getCurrent() method that returns a List of type Users which is retrieved by 
 	// the method getUsers of the object usersDao.
+
 	public List<Users> getCurrent(String username){
 		return usersDao.getUsers(username);
 	}
@@ -42,6 +43,7 @@ public class UsersService {
 	
 	public void createAccount(Users user){
 		usersDao.createAccount(user);
+
 	}
 	
 }

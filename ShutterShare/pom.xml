@@ -65,6 +65,7 @@
   		<artifactId>mysql-connector-java</artifactId>
   		<version>5.1.36</version>
   	</dependency>
+
   	<dependency>
   		<groupId>javax.validation</groupId>
   		<artifactId>validation-api</artifactId>
@@ -101,5 +102,6 @@
   		<artifactId>spring-security-config</artifactId>
   		<version>4.0.2.RELEASE</version>
   	</dependency>
+
   </dependencies>
 </project>

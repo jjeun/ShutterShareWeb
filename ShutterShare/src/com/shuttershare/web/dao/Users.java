@@ -1,5 +1,6 @@
 package com.shuttershare.web.dao;
 
+
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -201,6 +202,5 @@ public class Users {
 		this.enabled = enabled;
 	}
 	
-	
-	
-}
+}	
+

@@ -6,6 +6,7 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
+
 	<!-- Author: Jesse Jeun Date: 10/12/2015 CS188: Software Engineering - Professor 
 		Urness Description: defines beans of the shuttershare servlet (java program 
 		that runs within a web server) -->

@@ -1,5 +1,6 @@
 package com.shuttershare.web.controllers;
 
+
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
@@ -96,6 +97,6 @@ public class HomeController {
 		eventService.deleteEvent(eCode);
 			
 		return "deleteconfirmation";  // returning the string 'home' that will be used to redirect to the homepage. 
+
 	}
-	
 }
