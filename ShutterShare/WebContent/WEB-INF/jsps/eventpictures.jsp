@@ -9,6 +9,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-event pictures is under construction!
+	<p>
+		<a href="${pageContext.request.contextPath}/logout">Logout
+			of ShutterShare</a>
+	</p>
+	event pictures is under construction!
 </body>
 </html>

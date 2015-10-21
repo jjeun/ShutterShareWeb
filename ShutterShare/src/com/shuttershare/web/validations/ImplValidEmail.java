@@ -11,7 +11,7 @@ public class ImplValidEmail implements ConstraintValidator<ValidEmail, String>{
 	
 	@Override
 	public void initialize(ValidEmail constraintAnnotation) {
-		int min = constraintAnnotation.min();
+		min = constraintAnnotation.min();
 		
 	}
 	
@@ -22,7 +22,7 @@ public class ImplValidEmail implements ConstraintValidator<ValidEmail, String>{
 			return false;
 		}
 		
-		if(EmailValidator.getInstance(false).isValid(email)){
+		if(!EmailValidator.getInstance(false).isValid(email)){
 			return false;
 		}
 		

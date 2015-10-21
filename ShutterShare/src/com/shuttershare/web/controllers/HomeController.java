@@ -1,12 +1,16 @@
 package com.shuttershare.web.controllers;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.shuttershare.web.dao.Events;
 import com.shuttershare.web.dao.Users;
@@ -56,10 +60,11 @@ public class HomeController {
 	// traffic to the 'home' page of the website.
 	// Has one argument of type Model that is passed in. 
 	@RequestMapping("/")
-	public String showHome(Model model){
+	public String showHome(Model model, Principal principal){
 		
+		String username = principal.getName();
 		List<Events> userEvents = new ArrayList<Events>();
-		List<Users> users = userService.getCurrent(); // declaring variable 'user' of type Users.
+		List<Users> users = userService.getCurrent(username); // declaring variable 'user' of type Users.
 													 // variable is initialized to value returned by 
 													// getCurrent() method of object userService.
 		
@@ -67,7 +72,7 @@ public class HomeController {
 		
 		for(Events e:events){
 		
-			if (e.getEmail().equals(users.get(0).getEmail())){
+			if (e.getEmail().equals(users.get(0).getUserEmail())){
 				userEvents.add(e);
 			}
 		}
@@ -78,6 +83,19 @@ public class HomeController {
 		model.addAttribute("events", userEvents);
 		
 		return "home";  // returning the string 'home' that will be used to redirect to the homepage. 
+	}
+	
+	
+	
+	@RequestMapping(value="/deleteevent", method=RequestMethod.POST)
+	public String deleteEvent(Model model, HttpServletRequest result){
+
+//		System.out.println(result.getParameter("eventCode")); // test line
+		String eCode = result.getParameter("eventCode");
+
+		eventService.deleteEvent(eCode);
+			
+		return "deleteconfirmation";  // returning the string 'home' that will be used to redirect to the homepage. 
 	}
 	
 }

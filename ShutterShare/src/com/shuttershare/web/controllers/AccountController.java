@@ -2,6 +2,7 @@ package com.shuttershare.web.controllers;
 
 
 
+import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -10,6 +11,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -78,17 +80,28 @@ public class AccountController {
 	
 	
 	@RequestMapping(value = "/docreate", method=RequestMethod.POST)
-	public String doCreate(Model model,@Valid Events event, BindingResult result){
+	public String doCreate(Model model,@Valid Events event, BindingResult result, Principal principal){
 		
 		if(result.hasErrors()){
 			
 			return ("createevent");
 		}
 		
-		List<Users> user = userService.getCurrent();
+		String username = principal.getName();
+		List<Users> user = userService.getCurrent(username);
+	
 		
-		eventService.createEvent(event.getCode(), user.get(0).getEmail(), 
-				event.getDescription(), event.getDate(), event.getDays());
+		// try catch - that will execute createEvent() method as long as it is not a 
+		// a eventCode that already exists in the database. 
+		try {
+			eventService.createEvent(event.getEventCode(), user.get(0).getUserEmail(), 
+					event.getDescription(), event.getDate(), event.getDays());
+			
+		} catch (DuplicateKeyException e) {
+			
+			result.rejectValue("eventCode", "DuplicateKey.events.eventCode");	
+			return "createevent";
+		}
 		
 		return "eventconfirmation";  // returning the string 'home' that will be used to redirect to the homepage. 
 	}

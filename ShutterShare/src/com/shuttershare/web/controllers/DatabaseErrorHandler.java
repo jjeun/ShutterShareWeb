@@ -24,6 +24,7 @@ public class DatabaseErrorHandler {
 	// to error.jsp page to notify user. 
 	@ExceptionHandler(DataAccessException.class)
 	public String handleDatabaseException(DataAccessException ex){
+		ex.printStackTrace();
 		return "error";
 	}
 

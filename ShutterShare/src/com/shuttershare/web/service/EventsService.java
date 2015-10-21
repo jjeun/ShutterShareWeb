@@ -37,4 +37,11 @@ public class EventsService {
 		eventsDao.createEvent(code, email, description, date, days);
 	}
 
+
+	public void deleteEvent(String eCode) {
+		
+		eventsDao.deletEvent(eCode);
+		
+	}
+
 }

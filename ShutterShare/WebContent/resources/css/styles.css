@@ -6,8 +6,19 @@
 	color: red;
 }
 
+.valid {
+	font-size: small;
+	color: green;
+}
+
 
 /* Login Page */
 .loginError{
 	color: red;
+}
+
+
+/* Delete Button */
+.delete{
+	border: 1px solid red;
 }

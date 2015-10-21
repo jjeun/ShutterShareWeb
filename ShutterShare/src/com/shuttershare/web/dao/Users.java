@@ -1,8 +1,9 @@
 package com.shuttershare.web.dao;
 
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 import com.shuttershare.web.validations.ValidEmail;
 
@@ -20,49 +21,54 @@ Description: Users class - Holds the values id, firstName, lastName, email, pass
 // start of class Users
 public class Users {
 	
-	private String username;
-	
-	@NotNull(message="Must enter a first name.")
+	@NotBlank
 	private String firstName;
 	
-	@NotNull(message="Must enter a last name.")
+	@NotBlank
 	private String lastName;
 	
-	@NotNull(message="Must enter a email.")
-	@ValidEmail(message="This email is not valid")
-	@Pattern(regexp=".*\\@.*\\..*", message="This doesn't appear to be a valid email address.")
-	private String email;
+	@ValidEmail
+	private String userEmail;
 	
-	@NotNull(message="Must enter a password.")
+	@Size(min=6)
 	private String password;
 	
-	@NotNull(message="Must enter an address.")
+	@NotBlank
 	private String address;
 	
-	@NotNull(message="Must enter a city.")
+	@NotBlank
 	private String city;
 	
-	@NotNull(message="Must enter a state.")
+	@NotBlank
+	@Pattern(regexp="[A-Z]{2}")
 	private String state;
 	
-	@NotNull(message="Must enter a telephone number.")
+	@NotBlank
+	@Pattern(regexp="[0-9]{3}-[0-9]{3}-[0-9]{4}")
 	private String telephone;
 	
-	@NotNull(message="Must enter a zipcode.")
+	@NotBlank
 	@Pattern(regexp="[0-9]*")
-	private int zipcode;
+	@Size(min=5)
+	private String zipcode;
+	
+	private String username;
+	
+	private String authority;
+	
+	private boolean enabled;
 	
 	
 	// default constructor
 	public Users(){}
 	
 	// constructor that takes all the arguments
-	public Users(String username, String firstName, String lastName, String email, String password, String address,
-			String city, String state, String telephone, int zipcode) {
+	public Users(String username, String firstName, String lastName, String userEmail, String password, String address,
+			String city, String state, String telephone, String zipcode) {
 		this.username = username;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.email = email;
+		this.userEmail = userEmail;
 		this.password = password;
 		this.address = address;
 		this.city = city;
@@ -104,13 +110,14 @@ public class Users {
 	}
 	
 	// get method for email
-	public String getEmail() {
-		return email;
+	public String getUserEmail() {
+		return userEmail;
 	}
 	
 	// set method for email
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
+		this.username = userEmail;
 	}
 	
 	// get method for password
@@ -164,13 +171,34 @@ public class Users {
 	}
 
 	// get method for zipcode
-	public int getZipcode() {
+	public String getZipcode() {
 		return zipcode;
 	}
 
 	// set method for zipcode
-	public void setZipcode(int zipcode) {
+	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
+	}
+	
+	// get method for authority
+	public String getAuthority() {
+		return authority;
+	}
+
+	// set method for authority
+	public void setAuthority(String authority) {
+		this.authority = authority;
+	}
+
+
+	// get method for enabled
+	public boolean getEnabled() {
+		return enabled;
+	}
+	
+	// set method for enabled
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 	
 	

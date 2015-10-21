@@ -1,54 +1,71 @@
 package com.shuttershare.web.dao;
 
 import java.util.Date;
+
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 
 public class Events {
 	
-	@NotNull(message="Must create and event code")
-	@Size(min=6, max=12, message="Event code must be between 6-12 characters")
-	private String code;
+	@NotBlank
+	@Size(min=6, max=12)
+	private String eventCode;
 	
-	@NotNull(message="Must enter a event description")
-	@Size(min=1, max=25, message="Must enter a description between 1-25 characters")
+	@NotBlank
+	@Size(min=1, max=25)
 	private String description;
 	
 	@NotNull(message="Must enter a number of days for the event")
 	private int days;
 	
 	
-	@NotNull(message="Must enter a date for the event")
+	@NotNull
+	@DateTimeFormat
 	private Date date;
 	
 	private String email;
+	
+	private Events event;
+	
 	
 	
 	// default constructor
 	public Events(){}
 	
 	// constructor that takes in arguments code, description, days, date
-	public Events(String code, String description, int days, Date date) {
+	public Events(String eventCode, String description, int days, Date date) {
 		super();
-		this.code = code;
+		this.eventCode = eventCode;
 		this.description = description;
 		this.days = days;
 		this.date = date;
 	}
 
 
+	
+	// get method for event
+	public Events getEvent() {
+		return event;
+	}
+	
+	// set method for event
+	public void setEvent(Events event) {
+		this.event = event;
+	}
 
 	// get method for code
-	public String getCode() {
-		return code;
+	public String getEventCode() {
+		return eventCode;
 	}
 	
 	// set method for code
-	public void setCode(String code) {
-		this.code = code;
+	public void setEventCode(String eventCode) {
+		this.eventCode = eventCode;
 	}
 	
 	// get method for email

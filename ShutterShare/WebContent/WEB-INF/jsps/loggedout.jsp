@@ -5,11 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<meta http-equiv="Refresh" content="3;url=${pageContext.request.contextPath}/">
-<%-- <link href="${pageContext.request.contextPath}/resources/css/" rel="stylesheet" type='text/css' media='all' /> --%>
-<title>ShutterShare - Account Confirmation</title>
+<meta http-equiv="Refresh"
+	content="3;url=${pageContext.request.contextPath}/">
+<title>ShutterShare - Logout</title>
 </head>
-<body>
-You have created an account!
+<body>You have logged out of ShutterShare!
 </body>
 </html>
