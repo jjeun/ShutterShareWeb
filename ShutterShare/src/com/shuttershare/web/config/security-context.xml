@@ -5,7 +5,16 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.0.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-
+<!--
+Author: Jesse Jeun
+Date: 10/12/2015
+CS188: Software Engineering - Professor Urness
+Description: security-context.xml - Handles all the incoming security requests utilizing
+			Spring-Security technology which is a part of Spring MVC framework. Denotes rules
+			how the pages can be accessed (Logged in or not logged in).
+ --> 
+ 
+ 
 	<security:authentication-manager>
 		<security:authentication-provider>
 			<security:jdbc-user-service data-source-ref="dataSource" />
@@ -17,12 +26,20 @@
 		<security:intercept-url pattern="/createevent" access="isAuthenticated()" />
 		<security:intercept-url pattern="/eventconfirmation" access="isAuthenticated()" />
 		<security:intercept-url pattern="/home" access="isAuthenticated()" />
-		<security:intercept-url pattern="/eventpictures" access="isAuthenticated()" />
-		<security:intercept-url pattern="/pictureview" access="isAuthenticated()" />
+		<security:intercept-url pattern="/eventpics" access="isAuthenticated()" />
 		<security:intercept-url pattern="/docreate" access="isAuthenticated()" />
 		<security:intercept-url pattern="/generatepictures" access="isAuthenticated()" />
 		<security:intercept-url pattern="/" access="isAuthenticated()" />
+		<security:intercept-url pattern="/about" access="permitAll" />
+		<security:intercept-url pattern="/abouthome" access="permitAll" />
+		<security:intercept-url pattern="/aboutpage" access="permitAll" />
+		<security:intercept-url pattern="/aboutlogin" access="permitAll" />
 		<security:intercept-url pattern="/loggedout" access="permitAll" />
+		<security:intercept-url pattern="/updateaccount" access="permitAll" />
+		<security:intercept-url pattern="/settings" access="permitAll" />
+		<security:intercept-url pattern="/updateconfirmation" access="permitAll" />
+		<security:intercept-url pattern="/deletepic" access="permitAll" />
+		<security:intercept-url pattern="/generatepic" access="permitAll" />
 		<security:intercept-url pattern="/deleteevent" access="permitAll" />
 		<security:intercept-url pattern="/deleteconfirmation" access="permitAll" />
 		<security:intercept-url pattern="/accountconfirmation" access="permitAll" />

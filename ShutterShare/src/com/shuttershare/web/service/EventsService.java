@@ -9,6 +9,16 @@ import org.springframework.stereotype.Service;
 import com.shuttershare.web.dao.Events;
 import com.shuttershare.web.dao.EventsDao;
 
+
+/*
+Author: Jesse Jeun
+Date: 10/12/2015
+CS188: Software Engineering - Professor Urness
+Description: EventsService class  -  handles service calls to the database
+
+*/
+
+
 @Service("eventsService")
 public class EventsService {
 	
@@ -27,17 +37,19 @@ public class EventsService {
 
 	// getCurrent() method that returns a List of type Events which is retrieved by 
 	// the method getEvents of the object eventsDao.
-	public List<Events> getCurrent(){
-		return eventsDao.getEvents();
+	public List<Events> getCurrent(String username){
+		return eventsDao.getEvents(username);
 	}
 	
 	
+	// createEvent method that services the createEvent method of EventsDao which creates a new event
 	public void createEvent(String code, String email, String description, Date date, int days){
 		
 		eventsDao.createEvent(code, email, description, date, days);
 	}
 
 
+	// deleteEvent method that services the deleteEvent method of EventsDao that deletes a event
 	public void deleteEvent(String eCode) {
 		
 		eventsDao.deletEvent(eCode);

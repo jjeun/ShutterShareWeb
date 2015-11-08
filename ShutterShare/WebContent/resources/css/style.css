@@ -1,0 +1,225 @@
+@font-face {
+    
+    font-family: ArchivoNarrow;
+    src: url('../fonts/ArchivoNarrow-Regular.otf');
+}
+
+@font-face {
+    font-family: Avenir-Light;
+    src: url('../fonts/AvenirLTStd-Light.otf');
+}
+
+::-webkit-input-placeholder {
+    color: white;
+}
+:-moz-placeholder {
+    color: white;
+}
+::-moz-placeholder {
+    color: white;
+}
+:-ms-input-placeholder {
+    color: white;
+}
+
+
+body {
+    font-family: Avenir-Light;
+    background-color: #c4e5d7;
+}
+
+p {
+    color: #b64d2f;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+input{
+    color:#2e3055;
+    background-color: #c4e5d7;
+    border: 1px solid #8cbbb4;
+    border-radius: 5px;
+    
+}
+
+.form-control{
+    font-size: 13px;
+    color:#8cbbb4;
+    height: 25px; 
+    background-color: #c4e5d7;
+    border: 1px solid #8cbbb4;
+    border-radius: 5px;
+}
+
+
+
+td {
+    padding: 5px 2px;
+    color: #2e3055;
+}
+
+h4{
+    text-align: center;
+    color: #2e3055;
+}
+
+
+.navbar-custom {
+    color: #c4e5d7;
+    background-color: #b64d2f;
+}
+
+.nav.navbar-nav.navbar-right li a {
+    color: #c4e5d7;
+}
+
+ul.nav.navbar-nav.navbar-right a:hover {
+    color: white !important;
+    background-color: #79331f !important;
+}
+
+.navbar-toggle{
+    color:#c4e5d7;
+}
+
+.jumbotron{
+    background-color: white;
+    border: dotted;
+    border-width: medium;
+    border-color: #c4e5d7;
+}
+
+.navbar-default .navbar-toggle{
+    border-color: #c4e5d7;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #c4e5d7;
+}
+
+.formlabel {
+    text-align: right;
+}
+
+
+#orangelogo{
+    width: 40%;
+    padding-top:  25px;
+}
+
+#welcome{
+    font-family: ArchivoNarrow;
+    color: #2e3055;
+
+}
+
+#loginWelcome {
+    width: 350px;
+    height: 250px;
+    background-color: #b64d2f;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 15px;
+}
+
+#userlogin{
+    width: 350px;
+    height: 250px;
+    background-color: white;
+    border: dotted;
+    border-color: #c4e5d7;
+    padding: 25px 15px 15px 15px;
+    border-radius: 5px;
+    margin: 15px;
+}
+
+#createacc {
+    width: 80%;
+    background-color: white;
+    border: dotted;
+    border-color: #c4e5d7;
+    padding: 25px 15px 15px 15px;
+    border-radius: 5px;
+    margin: 25px;
+}
+
+.btn-primary {
+    background: #2e3055;
+    color: #ffffff;
+    border: hidden;
+}
+
+.btn-primary:hover{
+    background-color: #8cbbb4;
+}
+
+.btn-line {
+    background: white;
+    border: 0.5px solid #2e3055;
+    color: #2e3055;
+}
+
+.btn-line:hover {
+    color: white;
+    background-color: #8cbbb4;
+    border-color: #8cbbb4;
+}
+
+.btn-delete {
+    background: #2e3055;
+    color: #ffffff;
+    border: hidden;
+    font-size: .7em;;
+    border-radius: 3px;
+    padding: 2px 10px;
+    margin-bottom: 20px;
+}
+
+.btn-delete:hover{
+    background-color: #b64d2f;
+    color: white;
+}
+
+.loginError {
+    font-size: smaller;
+    padding-top: 8px;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+#event1 {
+    border:1px solid white;
+    background-color: white;
+    width: 200px;
+    height: 200px;
+}
+
+#event2 {
+    border:1px solid white;
+    background-color: white;
+    width: 200px;
+    height: 200px;
+}
+
+#event3 {
+    border:1px solid white;
+    background-color: white;
+    width: 200px;
+    height: 200px;
+}
+
+#eventcode {
+    text-align: left;
+    color: white;
+    width: 200px;
+    height: 30px;
+    background-color: #b64d2f;
+    padding: 7px 10px;
+}
+
+
+

@@ -7,8 +7,16 @@ import org.springframework.stereotype.Service;
 
 import com.shuttershare.web.dao.Pictures;
 import com.shuttershare.web.dao.PicturesDao;
-import com.shuttershare.web.dao.Users;
-import com.shuttershare.web.dao.UsersDao;
+
+
+/*
+Author: Jesse Jeun
+Date: 10/12/2015
+CS188: Software Engineering - Professor Urness
+Description: PicturesService class - handles service calls to the database
+
+*/
+
 
 @Service("picturesService")
 public class PicturesService {
@@ -27,8 +35,16 @@ public class PicturesService {
 
 	// getCurrent() method that returns a List of type Users which is retrieved by 
 	// the method getPictures of the object picturesDao.
-	public List<Pictures> getCurrent(){
-		return picturesDao.getPictures();
+	public List<Pictures> getPictures(String eventCode){
+		return picturesDao.getPictures(eventCode);
+	}
+
+
+	// deletePic method that service the deletePic method of PicturesDao which deletes a photo from the database
+	public Boolean deletePic(String picture) {
+		
+		return picturesDao.deletePic(picture);
+		
 	}
 
 }

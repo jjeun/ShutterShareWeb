@@ -102,6 +102,5 @@
   		<artifactId>spring-security-config</artifactId>
   		<version>4.0.2.RELEASE</version>
   	</dependency>
-
   </dependencies>
 </project>

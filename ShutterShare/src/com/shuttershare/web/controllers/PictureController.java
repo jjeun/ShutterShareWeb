@@ -2,19 +2,19 @@ package com.shuttershare.web.controllers;
 
 
 
-import javax.validation.Valid;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import com.shuttershare.web.dao.Events;
-import com.shuttershare.web.service.EventsService;
+import com.shuttershare.web.dao.Pictures;
 import com.shuttershare.web.service.PicturesService;
-import com.shuttershare.web.service.UsersService;
 
 
 /*
@@ -29,37 +29,11 @@ Description: Picuture controller class. Utilized Spring MVC framework to route i
 */
 
 
-// start of the PictureController class
+// start of the PictureController class. Utilizes SpringFramework Controller annotation
 @Controller
 public class PictureController {
 
-	private UsersService userService;	// declaring object 'userService' of type UsersService
-	private EventsService eventService;	// declaring object 'eventService' of type UsersService
 	private PicturesService pictureService;	// declaring object 'pictureService' of type PicturesService
-	
-	
-	
-	
-	
-	
-	// start of setUserrService method that utilizes Spring Autowired annotation
-	// has an argument of type UsersService. Initializes userService private variable to the
-	// argument that is passed in. 
-	@Autowired
-	public void setUserService(UsersService userService) {
-		this.userService = userService;
-	}
-	
-	
-	
-	// start of setEventService method that utilizes Spring Autowired annotation
-	// has an argument of type EventsService. Initializes eventService private variable to the
-	// argument that is passed in. 
-	@Autowired
-	public void setEventsService(EventsService eventService) {
-		this.eventService = eventService;
-	}
-	
 	
 	
 	// start of setPicturesService method that utilizes Spring Autowired annotation
@@ -71,21 +45,48 @@ public class PictureController {
 	}
 	
 	
-	@RequestMapping(value = "/eventpictures")
-	public String createEvent(Model model){
+	
+	// method eventPics that utilizes SpringFramwork RequestMapping annotation which directs
+	// incoming url ending in /eventpics. Logic in the method are executed and then redirects to 
+	// the eventpics jsp.
+	@RequestMapping(value = "/eventpics")
+	public String eventPics(Model model, HttpServletRequest request){
 		
-		model.addAttribute("events", new Events());
+		// declaring variables and initializing them to values passed in with the HttpRequest
+		String eventcode = request.getParameter("eventcode");
+		String description = request.getParameter("description");
 		
-		return "eventpictures";  // returning the string 'createpictures' that will be used to redirect to the event picture page. 
+		// declaring list object of type Pictures. Initialized to the results of getPictures method of class PictureService.
+		List<Pictures> pictures = pictureService.getPictures(eventcode);
+		
+		// declaring variables and initializing them values that will be passed to the jsp
+		model.addAttribute("description", description);
+		model.addAttribute("pictures", pictures);
+		
+		return "eventpics";  // returning the string 'createpictures' that will be used to redirect to the event picture page. 
 	}
 	
 	
 	
-	@RequestMapping(value = "/generatepic", method=RequestMethod.POST)
-	public String doCreate(Model model,@Valid Events event, BindingResult result){
+	// method deletePic that utilizes SpringFramwork RequestMapping annotation which directs
+	// incoming url ending in /deletepic. Logic in the method are executed and then redirects to 
+	// the eventpics jsp.
+	@RequestMapping(value = "/deletepic", method=RequestMethod.POST)
+	public String deletePic(Model model,@RequestParam("picture") String picture, @RequestParam("eventCode") String eventCode, 
+				@RequestParam("description") String description){
 		
-		return "pictureview";  // returning the string 'home' that will be used to redirect to the homepage. 
+		// executing the deletePic method of class PictureService
+		pictureService.deletePic(picture);
+		
+		// declaring list object of type Pictures. Initialized to the results of getPictures method of class PictureService.
+		List<Pictures> pictures = pictureService.getPictures(eventCode);
+		
+		// declaring variables and initializing them values that will be passed to the jsp
+		model.addAttribute("eventcode", eventCode);
+		model.addAttribute("description", description);
+		model.addAttribute("pictures", pictures);
+		
+		return "eventpics";  // returning the string 'eventpics' that will be used to redirect to the event pic page. 
 	}
 	
-
 }

@@ -35,15 +35,24 @@ public class UsersService {
 
 	// getCurrent() method that returns a List of type Users which is retrieved by 
 	// the method getUsers of the object usersDao.
-
 	public List<Users> getCurrent(String username){
 		return usersDao.getUsers(username);
 	}
 	
 	
+	// createAccount method that service the createAccount method of UsersDao which creates
+	// a new user account in the database
 	public void createAccount(Users user){
 		usersDao.createAccount(user);
 
+	}
+
+
+	// updateAccount method that service the updateAccount method of UsersDao which updates 
+	// a user account in the database
+	public void updateAccount(Users user) {
+
+		usersDao.updateAccount(user);
 	}
 	
 }

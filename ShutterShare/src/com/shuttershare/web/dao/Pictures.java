@@ -1,7 +1,18 @@
 package com.shuttershare.web.dao;
 
-import java.util.Date;
+import java.sql.Date;
 
+/*
+Author: Jesse Jeun
+Date: 10/12/2015
+CS188: Software Engineering - Professor Urness
+Description: Pictures class 
+
+*/
+
+
+
+// Java Bean Picuters
 public class Pictures {
 	
 	private int picId;
@@ -9,6 +20,7 @@ public class Pictures {
 	private String uploader;
 	private Date date;
 	private String picture;
+	private Pictures pictures;
 	
 	
 	// default constructor
@@ -63,4 +75,16 @@ public class Pictures {
 	public void setPicture(String picture) {
 		this.picture = picture;
 	}
+
+	// get method for pictures object
+	public Pictures getPictures() {
+		return pictures;
+	}
+	
+	// set method for pictures object
+	public void setPictures(Pictures pictures) {
+		this.pictures = pictures;
+	}
+	
+	
 }

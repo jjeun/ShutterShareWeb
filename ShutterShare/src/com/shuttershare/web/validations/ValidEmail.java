@@ -12,6 +12,18 @@ import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 
+
+/*
+Author: Jesse Jeun
+Date: 10/12/2015
+CS188: Software Engineering - Professor Urness
+Description: ValidEmail class 
+
+*/
+
+
+
+// interface that is used to create a custom SpringFramework Email annotation used to validate email addresses. 
 @Target({ METHOD, FIELD, ANNOTATION_TYPE })
 @Retention(RUNTIME)
 @Documented

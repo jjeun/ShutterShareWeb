@@ -1,6 +1,7 @@
 package com.shuttershare.web.dao;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -9,6 +10,16 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
 
+/*
+Author: Jesse Jeun
+Date: 10/12/2015
+CS188: Software Engineering - Professor Urness
+Description: Events class 
+
+*/
+
+
+// Java Bean Events 
 
 public class Events {
 	
@@ -32,18 +43,21 @@ public class Events {
 	
 	private Events event;
 	
+	private List<Pictures> picture;
+	
 	
 	
 	// default constructor
 	public Events(){}
 	
 	// constructor that takes in arguments code, description, days, date
-	public Events(String eventCode, String description, int days, Date date) {
+	public Events(String eventCode, String description, int days, Date date, List<Pictures> picture) {
 		super();
 		this.eventCode = eventCode;
 		this.description = description;
 		this.days = days;
 		this.date = date;
+		this.picture = picture;
 	}
 
 
@@ -107,6 +121,16 @@ public class Events {
 	// set method for date
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+	// get method for pictures
+	public List<Pictures> getPicture() {
+		return picture;
+	}
+
+	// set method for pictures
+	public void setPicture(List<Pictures> picture) {
+		this.picture = picture;
 	}
 	
 }

@@ -18,7 +18,9 @@ Description: home.jsp (java server page) - Renders the homepage for the website 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title>ShutterShare - Home</title>
+
+
+<title>ShutterShare - Event Pictures</title>
 <meta name="viewport" content="width=device-width, intial-scale=1.0">
 <link
 	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"
@@ -30,22 +32,18 @@ Description: home.jsp (java server page) - Renders the homepage for the website 
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script
 	src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-
-
+	
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/script/jquery.js"></script>
 <script type="text/javascript">
 
 $(document).on("click", "#delete", function () {
-    var eventCode = $(this).data('id');
-    $(".modal-body #eventCode").val( eventCode );
-    // As pointed out in comments, 
-    // it is superfluous to have to manually call the modal.
-    // $('#addBookDialog').modal('show');
+    var picture = $(this).data('id');
+    $(".modal-body #picture").val( picture );
+
 });
 
 </script> 
-
 
 
 </head>
@@ -80,11 +78,11 @@ $(document).on("click", "#delete", function () {
 
 	</div>
 	<!-- navigation bar ends-->
-	<center>
+	<%-- <center>
 		<img
 			src="${pageContext.request.contextPath}/resources/images/orangelogo.png"
 			class="img-responsive" id="orangelogo" alt="orangelogo">
-	</center>
+	</center> --%>
 
 	<!-- welcome box -->
 	<br />
@@ -93,60 +91,44 @@ $(document).on("click", "#delete", function () {
 		<div class="jumbotron">
 			<center>
 				<h1 id="welcome">
-					Welcome,
-					<c:out value="${users[0].firstName}"></c:out>!
+					<c:out value="${description} Picture Gallery"></c:out>
 				</h1>
-				<br /> <a href="${pageContext.request.contextPath}/createevent"
-					class="btn btn-primary">Create a New Event</a>
+				 
 			</center>
 		</div>
 	</div>
-	<br />
 
+	<div class="container">
+		<center>
 
-	<!--show events-->
-	<center>
-		<c:if test="${empty events}">
-			<p>You have no events created.</p>
-		</c:if>
-		<c:if test="${!empty events}">
-			<p>You have events!</p>
-			<br />
-			<br />
-		</c:if>
-	</center>
-
-	<c:if test="${!empty events}">
-		<div class="container">
-			<center>
-
-
-				<div class="row">
-					<c:forEach var="event" items="${events}">
-						<div class="col-sm-4">
-							<p id="eventcode">Event: ${event.description}</p>
-							<p id="eventcode">Event Code: ${event.eventCode}</p>
-							<p id="event1">
-								<a href="${pageContext.request.contextPath}/eventpics?eventcode=${event.eventCode}&description=${event.description}">
-								<img src="${pageContext.request.contextPath}/resources/images/orangeshuttericon.png"
-									alt="ShutterShare Pictures" height="90%" width="90%"></a>
-							</p>
+			<div class="row">
+				<c:forEach var="pic" items="${pictures}">
+					<div class="col-sm-4">
+						<p id="eventcode">Taken By: ${pic.uploader}</p>
+						<p id="event1">
+							<a href="http://52.27.86.208/uploads/${pic.picture}">
+							<img src="http://52.27.86.208/uploads/${pic.picture}"
+								alt="ShutterShare Pictures" height="100%" width="100%"></a>
+						</p>
 						
-							&nbsp;
-							&nbsp;
-							
-							<a href="#deletepopup" data-toggle="modal" data-id="${event.eventCode}" class = "btn btn-delete delete" id="delete" type="submit">Delete Event</a>
+						&nbsp;
+						&nbsp;
 						
-						</div>
-					</c:forEach>
-				</div>
+						<a href="http://52.27.86.208/uploads/${pic.picture}" download="${pic.picture}">
+							<button class="btn-small btn-delete delete" id="delete"
+								type="submit">Download Picture</button></a><br>
+								
+						<a href="#deletepopup" data-toggle="modal" data-id="${pic.picture}" 
+							class = "btn btn-delete delete" id="delete" type="submit">Delete Picture</a>
+						
+					</div>
+				</c:forEach>
+			</div>
 
-			</center>
-		</div>
-	</c:if>
+		</center>
+	</div>
 	
-	
- 	<div class="modal fade" id="deletepopup">
+	 	<div class="modal fade" id="deletepopup">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="model-header">
@@ -155,13 +137,17 @@ $(document).on("click", "#delete", function () {
 					<div class="modal-body">
 						<center>
 						<p>Are you sure you want to delete this event?</p><br />
-						
-						<form action="${pageContext.request.contextPath}/" method="post">	
+						<form action="${pageContext.request.contextPath}/eventpics" method="post">
+							<input type="hidden" value="" id= "picture" name="picture" />
+							<input type="hidden" value="${description}" id= "description" name="description" />
+							<input type="hidden" value="${pictures[0].code}" id= "eventcode" name="eventcode" />
 							<button class = "btn-small btn-delete delete" id="no" type="submit">NO</button>
-						</form> 
-						
-						<form action="${pageContext.request.contextPath}/deleteevent" method="post">	
-							<input type="hidden" value="" id= "eventCode" name="eventCode" />
+						</form>
+					
+						<form action="${pageContext.request.contextPath}/deletepic" method="post">
+							<input type="hidden" value="" id= "picture" name="picture" />
+							<input type="hidden" value="${description}" id= "description" name="description" />
+							<input type="hidden" value="${pictures[0].code}" id= "eventCode" name="eventCode" />
 							<button class = "btn-small btn-delete delete" id="yes" type="submit">YES</button>
 						</form> 
 						</center>
@@ -169,7 +155,7 @@ $(document).on("click", "#delete", function () {
 				</div>
 			</div>
 		</div>
-			 
+
 
 </body>
 </html>

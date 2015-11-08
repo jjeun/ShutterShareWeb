@@ -1,6 +1,7 @@
 package com.shuttershare.web.controllers;
 
 
+
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
@@ -63,40 +64,78 @@ public class HomeController {
 	@RequestMapping("/")
 	public String showHome(Model model, Principal principal){
 		
+		// declaring variable username that calls SpringSecurity method to retrieve the username. 
 		String username = principal.getName();
+		
+		// declaring a new list userEvents object.
 		List<Events> userEvents = new ArrayList<Events>();
+		
 		List<Users> users = userService.getCurrent(username); // declaring variable 'user' of type Users.
 													 // variable is initialized to value returned by 
 													// getCurrent() method of object userService.
 		
-		List<Events> events = eventService.getCurrent();
+		// declaring object events of type Events and initializing the result returned by 
+		// getCurrent method of EventService class
+		List<Events> events = eventService.getCurrent(username);
 		
+		// for-loop the iterates thru each element of events and adds elements to userEvent list 
+		// where the email's in objects users and events are the same.
 		for(Events e:events){
 		
+			// condition that executes if emails in objects users and events are equal
 			if (e.getEmail().equals(users.get(0).getUserEmail())){
-				userEvents.add(e);
+				userEvents.add(e);  // adding element in events list to list userEvents
 			}
 		}
 		
 		
-		model.addAttribute("users", users);  // creating attribute 'users' that is set to object 'users' from above.
+		model.addAttribute("users", users);  // creating variable 'users' that is set to object 'users' from above.
 											// 'users' attribute will passed to home.jsp where it can be used. 
-		model.addAttribute("events", userEvents);
+		
+		model.addAttribute("events", userEvents); // creating variable events that is initalized to userEvents list which
+													// will be passed and used in home jsp
 		
 		return "home";  // returning the string 'home' that will be used to redirect to the homepage. 
 	}
 	
 	
 	
+	// method deleteEvent that utilizes SpringFramwork RequestMapping annotation which directs
+	// incoming url ending in /deleteevent. Logic in the method are executed and then redirects to 
+	// the deleteconfirmation jsp.
 	@RequestMapping(value="/deleteevent", method=RequestMethod.POST)
 	public String deleteEvent(Model model, HttpServletRequest result){
 
-//		System.out.println(result.getParameter("eventCode")); // test line
+		// creating variable eCode of type string that will be initialized to the eventCode
+		// passed as part of the HttpRequest 
 		String eCode = result.getParameter("eventCode");
 
+		// executing method deleteEvent of EventService class
 		eventService.deleteEvent(eCode);
 			
-		return "deleteconfirmation";  // returning the string 'home' that will be used to redirect to the homepage. 
+		return "deleteconfirmation";  // returning the string 'deleteconfirmation' that will be used to redirect to the deleteconfirmation page. 
+
+	}
+	
+	
+	// method aboutPage that utilizes SpringFramwork RequestMapping annotation which directs
+	// incoming url ending in /about. Logic in the method are executed and then redirects to 
+	// the aboutpage jsp.
+	@RequestMapping("/about")
+	public String aboutPage(Model model){
+			
+		return "aboutpage";  // returning the string 'aboutpage' that will be used to redirect to the about page. 
+
+	}
+	
+	
+	// method aboutlogin that utilizes SpringFramwork RequestMapping annotation which directs
+	// incoming url ending in /abouthome. Logic in the method are executed and then redirects to 
+	// the aboutpage jsp.
+	@RequestMapping("/abouthome")
+	public String aboutHome(Model model){
+			
+		return "aboutlogin";  // returning the string 'aboutlogin' that will be used to redirect to the about page. 
 
 	}
 }

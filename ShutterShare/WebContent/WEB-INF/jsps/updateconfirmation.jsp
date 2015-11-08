@@ -9,7 +9,7 @@
 	content="3;url=${pageContext.request.contextPath}/">
 
 <%-- <link href="${pageContext.request.contextPath}/resources/css/" rel="stylesheet" type='text/css' media='all' /> --%>
-<title>Account Confirmation</title>
+<title>Update Confirmation</title>
 <meta name="viewport" content="width=device-width, intial-scale=1.0">
 <link
 	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"
@@ -36,6 +36,9 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="${pageContext.request.contextPath}/">Home</a></li>
 					<li><a href="#">About</a></li>
+					<li><a href="${pageContext.request.contextPath}/settings">Account</a></li>
+					<li><a href="${pageContext.request.contextPath}/logout">Log
+							out</a></li>
 				</ul>
 
 			</div>
@@ -46,7 +49,7 @@
 	<!-- navigation bar ends-->
 
 	<center>
-		<p>Congratulation your account has been created!</p>
+		<p>Congratulation your account has been updated!</p>
 	</center>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

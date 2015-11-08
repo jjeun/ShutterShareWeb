@@ -11,9 +11,12 @@
 		<config>src/com/shuttershare/web/config/dao-context.xml</config>
 		<config>src/com/shuttershare/web/config/service-context.xml</config>
 <<<<<<< HEAD
+<<<<<<< HEAD
 		<config>src/com/shuttershare/web/config/security-context.xml</config>
 =======
 >>>>>>> branch 'master' of https://github.com/jjeun/ShutterShareWeb.git
+=======
+>>>>>>> refs/remotes/origin/master
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

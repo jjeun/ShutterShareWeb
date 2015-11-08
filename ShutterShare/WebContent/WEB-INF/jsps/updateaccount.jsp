@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+
 <head>
 <link href="${pageContext.request.contextPath}/resources/css/styles.css"
 	rel="stylesheet" type='text/css' />
@@ -58,7 +58,7 @@ $(document).ready(onLoad);
 
 
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>ShutterShare - Create New Account</title>
+	<title>ShutterShare - Account Settings</title>
 	<meta name="viewport" content="width=device-width, intial-scale=1.0">
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet" type="text/css"/>
@@ -81,7 +81,8 @@ $(document).ready(onLoad);
 				<ul class = "nav navbar-nav navbar-right">
 					<li><a href = "${pageContext.request.contextPath}/">Home</a></li>
 					<li><a href = "${pageContext.request.contextPath}/about">About</a></li>
-					<li><a href="${pageContext.request.contextPath}/logout">Log out</a></li>
+					<li><a href="${pageContext.request.contextPath}/settings">Account</a></li>
+					<li><a href= "${pageContext.request.contextPath}/logout">Log out</a></li>
 				</ul>
 			
 				</div>
@@ -95,36 +96,36 @@ $(document).ready(onLoad);
 		<div class="row">
 			<center>
 			<fieldset id="createacc">
-				<sf:form id="details" method="post" action="${pageContext.request.contextPath}/createaccount" commandName="users">
+				<sf:form id="details" method="post" action="${pageContext.request.contextPath}/updateaccount" commandName="users">
 					<center>
-					<h4>Create Account</h4><br />
+					<h4>Update Account</h4><br />
 					<table>
 						<tr>
 							<td class = "formlabel">First Name:</td>
 							<td><sf:input path="firstName" name="firstName" type="text"
-									placeholder="First Name" /><br /> <sf:errors path="firstName"
-									cssClass="error"></sf:errors></td>
+						 		value="${user.firstName}"/><br /> <sf:errors path="firstName"
+								cssClass="error"></sf:errors></td>
 						</tr>
 			
 						<tr>
 							<td class = "formlabel">Last Name:</td>
 							<td><sf:input path="lastName" name="lastName" type="text"
-									placeholder="Last Name" /><br /> <sf:errors path="lastName"
-									cssClass="error"></sf:errors></td>
+								value="${user.lastName}" /><br /> <sf:errors path="lastName"
+								cssClass="error"></sf:errors></td>
 						</tr>
 			
 						<tr>
 							<td class = "formlabel">Address:</td>
 							<td><sf:input path="address" name="address" type="text"
-									placeholder="Address" /><br /> <sf:errors path="address"
-									cssClass="error"></sf:errors></td>	
+									value="${user.address}" /><br /> <sf:errors path="address"
+									cssClass="error"></sf:errors></td>
 						</tr>
 			
 						<tr>
 							<td class = "formlabel">City:</td>
 							<td><sf:input path="city" name="city" type="text"
-									placeholder="City" /><br /> <sf:errors path="city"
-									cssClass="error"></sf:errors></td>	
+									value="${user.city}" /><br /> <sf:errors path="city"
+									cssClass="error"></sf:errors></td>
 						</tr>
 			
 			
@@ -132,6 +133,7 @@ $(document).ready(onLoad);
 							<td class = "formlabel">State:</td>
 							<td>
 								<sf:select name="state" class="form-control" path="state">
+									<option selected="selected">${user.state}</option>
 									<option value="AL">AL</option>
 									<option value="AK">AK</option>
 									<option value="AZ">AZ</option>
@@ -192,41 +194,39 @@ $(document).ready(onLoad);
 						<tr>
 							<td class = "formlabel">ZipCode:</td>
 							<td><sf:input path="zipcode" name="zipcode" type="text"
-									placeholder="ZipCode" /><br /> <sf:errors path="zipcode"
-									cssClass="error"></sf:errors></td> 
-						</tr>
-			
-						<tr>
-							<td class = "formlabel">Email:</td>
-							<td><sf:input path="userEmail" name="userEmail" type="text"
-									placeholder="Email Address" /><br /> <sf:errors path="userEmail"
+									value="${user.zipcode}" /><br /> <sf:errors path="zipcode"
 									cssClass="error"></sf:errors></td>
 						</tr>
+
 			
 						<tr>
 							<td class = "formlabel">Telephone:</td>
 							<td><sf:input path="telephone" name="telephone" type="text"
-									placeholder="XXX - XXX - XXXX" /><br /> <sf:errors
+									value="${user.telephone}" /><br /> <sf:errors
 									path="telephone" cssClass="error"></sf:errors></td>
 						</tr>
 			
 			
 						<tr>
 							<td class="formlabel">Password:</td>
-							<td><input id="password" path="password" name="password" type="text"
-									placeholder="Min 6 Characters"/><br /> <sf:errors path="password"
-									cssClass="error"></sf:errors></td>
+							<td><sf:input id="password" path="password" name="password"
+									type="text" value="${user.password}" /><br /> <sf:errors
+									path="password" cssClass="error"></sf:errors></td>
 						</tr>
 			
 						<tr>
 							<td>Confirm Password:</td>
 							<td><input id="confirmPass" name="confirmPass" type="text"
-								placeholder="Re-Enter Password" /><div id="matchPass"></div></td> 
+								value="${user.password}" />
+							<div id="matchPass"></div></td>
 						</tr>
 			
 					</table><br />
 					
-					<button class = "btn btn-primary" name="submit" id="createaccount" type="submit">Create Account</button>
+					<sf:input path="userEmail" name="userEmail" type="hidden"
+						value="${user.userEmail}" />
+					
+					<button class = "btn btn-primary" name="submit" id="createaccount" type="submit">Update Account</button>
 					</center><br />
 			
 				</sf:form>

@@ -1,6 +1,7 @@
 package com.shuttershare.web.dao;
 
 
+
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -18,7 +19,7 @@ Description: Users class - Holds the values id, firstName, lastName, email, pass
 
 */
 
-
+// Java Bean Users
 // start of class Users
 public class Users {
 	
