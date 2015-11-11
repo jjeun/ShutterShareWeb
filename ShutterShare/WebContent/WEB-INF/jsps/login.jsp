@@ -47,6 +47,10 @@
 					<h2>Welcome to</h2>
 					<img src="${pageContext.request.contextPath}/resources/images/greenlogo.png" class="img-responsive"
 						id="login-greenlogo" alt="greenlogo">
+						
+						 <br/>                        
+                        <a href="https://play.google.com/store/apps/details?id=com.application.shuttershare&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-AC-global-none-all-co-pr-py-PartBadges-Oct1515-1"><img alt="Get it on Google Play" src="http://developer.android.com/images/brand/en_generic_rgb_wo_60.png" /></a>
+						<br/>
 				</center>
 
 				<!-- login box (right)-->
