@@ -21,7 +21,7 @@
 				<div class = "collapse navbar-collapse navHeaderCollapse">
 				<ul class = "nav navbar-nav navbar-right">
 					<li><a href = "${pageContext.request.contextPath}/">Home</a></li>
-					<li><a href = "${pageContext.request.contextPath}/about">About</a></li>
+					<li><a href = "${pageContext.request.contextPath}/abouthome">About</a></li>
 				</ul>
 			
 				</div>
@@ -38,6 +38,11 @@
                         <div class="container" id="box">
                         <p id="aboutp">Shutter Share is a premium photo sharing application curated by friends and family.  Simply enter an event access code and begin live-uploading photos and videos to the event album. Shutter Share is a modern solution to an everyday problem. With our application your photos are saved in one safe place, so you can enjoy the event now and relive it all later.</p>
                         </div>
+                        
+                        <br/>
+                        <br/>
+                        
+                        <a href="https://play.google.com/store/apps/details?id=com.application.shuttershare&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-AC-global-none-all-co-pr-py-PartBadges-Oct1515-1"><img alt="Get it on Google Play" src="http://developer.android.com/images/brand/en_generic_rgb_wo_60.png" /></a>
                     </center>
                 </div>
             </div>
